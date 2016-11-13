@@ -1,5 +1,6 @@
 
 
+
 // № 5 варіанту за списком групи
 // Породжуючий    № Структурний № 	Поведінки 
 // Factory method 2 Adapter     3  Strategy 5
@@ -44,7 +45,6 @@ class Rose {
 		[1,2,3,4,5].map(function () {
 			console.log("I'm beautiful flower, ROSE!")	
 		})
-		
 	}	
 }
 class FlowerAdapter {
@@ -58,5 +58,54 @@ class FlowerAdapter {
 var flower = new Flower();
 var rose = new Rose();
 var flowerAdapter = new FlowerAdapter(rose);
-flowerAdapter.sayHi();
+// flowerAdapter.sayHi();
+
+
+// Strategy
+// № Дія      Вид алгоритму Алгоритм 1 Алгоритм  2 Алгоритм 
+// 5 DataSort Sort          Linear     Selection Ternary
+
+class Sort {
+	exec() {
+		throw new Error('Method should be redefined in exetending class')
+	}
+}
+
+class LinearSort extends Sort{
+	exec(data) {}
+}
+
+class SelectionSort extends Sort{
+	exec(data) {}
+}
+class TernarySort extends Sort{
+	exec(data) {}
+}
+class DataSort {
+	constructor(strategy) {
+		this.strategy = strategy;
+	}
+	sort (data) {
+		return this.strategy.exec(data);
+	}
+};
+
+var strategyExample = function() {
+	var dataSortLinear = new DataSort(new LinearSort());
+	var dataSortTernary = new DataSort(new TernarySort());
+	var dataSortSelection = new DataSort(new SelectionSort());
+
+	var dataBlunk = new Array(1,2,3,4,5,6,7,7,8,9,0,233,43,4543,534,534,5,46,56);
+	data = dataBlunk.map(function(i) {
+		return Math.floor(Math.random() % 100 * 40);
+	})
+	console.log(data);
+	dataSortLinear.sort(data);
+	dataSortTernary.sort(data);
+	dataSortSelection.sort(data);
+}
+strategyExample();
+
+
+
 
