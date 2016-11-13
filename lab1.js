@@ -67,7 +67,7 @@ var flowerAdapter = new FlowerAdapter(rose);
 
 class Sort {
 	exec() {
-		throw new Error('Method should be redefined in exetending class')
+		throw new Error('Method should be redefined in extending class')
 	}
 }
 
